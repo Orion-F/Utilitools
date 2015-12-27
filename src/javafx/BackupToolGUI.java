@@ -4,7 +4,7 @@ public class BackupToolGUI extends CustomStage {
     
     private final String VERSION = "0.0.1";
     
-    private final int WIDTH = 400;
+    private final int WIDTH = 300;
     private final int HEIGHT = 400;
     
     public BackupToolGUI() {
@@ -13,7 +13,7 @@ public class BackupToolGUI extends CustomStage {
         this.setWidth(WIDTH);
         this.setHeight(HEIGHT);
         this.setTitleBarColor("#363652"); //Purple-ish
-        this.setTitleTextColor("#000000"); //Black
+        this.setTitleTextColor("#FFFFFF"); //White
         
         this.show();
     }
