@@ -2,6 +2,7 @@ package javafx;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,6 +17,12 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ * Stage with a custom title bar
+ * 
+ * @author Orion
+ *
+ */
 public class CustomStage extends Stage {
     
     private final int titleHeight = 25;
@@ -90,7 +97,6 @@ public class CustomStage extends Stage {
             }
         });
         
-        
         basePane.setTop(titleBar);
         
         baseScene = new Scene(basePane);
@@ -99,9 +105,20 @@ public class CustomStage extends Stage {
     }
     
     /**
+     * Sets the node to encompass the entirety of 
+     * the stage that does not include the title bar
+     * 
+     * @param majorNode The {@link javafx.scene.Node Node} to put in the stage
+     */
+    public void setMajor(Node majorNode) {
+        basePane.setCenter(majorNode);
+    }
+    
+    /**
      * <u><b>! Use this instead of {@link javafx.stage.Stage#setTitle(String) setTitle} !</b></u><br>
      * Sets the value of the property title and its visual representation on the custom title bar.
-     * @param newTitle
+     * 
+     * @param newTitle The {@link java.lang.String String} title replace the current title with
      */
     public void setCustomTitle(String newTitle) {
         this.setTitle(newTitle);
