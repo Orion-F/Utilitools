@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
  * @author Orion
  *
  */
+@Deprecated
 public class LoadedImages {
     
     /**
