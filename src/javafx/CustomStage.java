@@ -1,11 +1,16 @@
 package javafx;
 
+import java.util.Optional;
+
 import img.LoadedImages;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
@@ -37,6 +42,8 @@ public class CustomStage extends Stage {
     private Button minimizeButton, closeButton;
     
     private double xInitial, yInitial;
+    
+    private boolean warnBeforeQuitting;
     
     protected CustomStage() {
         this.initStyle(StageStyle.UNDECORATED);
@@ -147,7 +154,20 @@ public class CustomStage extends Stage {
     }
     
     public void closeWindow() {
-        this.close();
+        if (warnBeforeQuitting) {
+        	Alert closeAlert = new Alert(AlertType.CONFIRMATION);
+        	closeAlert.setTitle("Confirm Close");
+        	closeAlert.setHeaderText("Confirm Close");
+        	closeAlert.setContentText("Are you sure that you would like to close?");
+        	Optional<ButtonType> result = closeAlert.showAndWait();
+        	if (result.get() == ButtonType.OK){
+        		this.close();
+        	} else {
+        	    //Do nothing
+        	}
+        } else {
+            this.close();
+        }
     }
     
     public void setPosition(double x, double y) {
@@ -158,5 +178,9 @@ public class CustomStage extends Stage {
     public void offsetPosition(double xOffset, double yOffset) {
         this.setX(this.getX() + xOffset);
         this.setY(this.getY() + yOffset);
+    }
+    
+    public void warnBeforeQuitting(boolean bool) {
+        warnBeforeQuitting = bool;
     }
 }
