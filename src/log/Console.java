@@ -1,12 +1,14 @@
-package javafx;
+package log;
 
-public class BackupToolGUI extends CustomStage {
+import javafx.CustomStage;
+
+public class Console extends CustomStage {
     
     private final int WIDTH = 300;
     private final int HEIGHT = 400;
     
-    public BackupToolGUI() {
-        this.setCustomTitle("BackupToolGUI");
+    public Console() {
+        this.setCustomTitle("Console");
         this.setResizable(false);
         this.setWidth(WIDTH);
         this.setHeight(HEIGHT);
@@ -15,4 +17,6 @@ public class BackupToolGUI extends CustomStage {
         
         this.show();
     }
+    
+    //All the stuff like println() print() etc.
 }

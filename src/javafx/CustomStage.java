@@ -46,6 +46,8 @@ public class CustomStage extends Stage {
     
     private boolean warnBeforeQuitting;
     
+    private String windowName = "";
+    
     protected CustomStage() {
         this.initStyle(StageStyle.UNDECORATED);
         
@@ -67,7 +69,6 @@ public class CustomStage extends Stage {
                 toggleMinimized();
             }
         });
-        
         closeButton = new Button();
         closeButton.setGraphic(new ImageView(new SafeImage("/img/closeIcon.png").getImage()));
         closeButton.setPrefHeight(titleButtonHeight);
@@ -159,7 +160,7 @@ public class CustomStage extends Stage {
         	Alert closeAlert = new Alert(AlertType.CONFIRMATION);
         	closeAlert.setTitle("Confirm Close");
         	closeAlert.setHeaderText("Confirm Close");
-        	closeAlert.setContentText("Are you sure that you would like to close?");
+        	closeAlert.setContentText("Are you sure that you would like to close " + windowName + "?");
         	Optional<ButtonType> result = closeAlert.showAndWait();
         	if (result.get() == ButtonType.OK){
         		this.close();
@@ -183,5 +184,9 @@ public class CustomStage extends Stage {
     
     public void warnBeforeQuitting(boolean bool) {
         warnBeforeQuitting = bool;
+    }
+    
+    public void setWindowName(String name) {
+        windowName = name;
     }
 }
