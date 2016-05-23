@@ -32,8 +32,8 @@ import javafx.stage.StageStyle;
  */
 public class CustomStage extends Stage {
     
-    private final int titleHeight = 25;
-    private final int titleButtonHeight = 20;
+    private int titleHeight = 28;
+    private int titleButtonHeight = 20;
     
     private Scene baseScene;
     private BorderPane basePane;
@@ -188,5 +188,29 @@ public class CustomStage extends Stage {
     
     public void setWindowName(String name) {
         windowName = name;
+    }
+
+    public ToolBar getTitleBar() {
+        return titleBar;
+    }
+
+    public Label getTitleLabel() {
+        return titleLabel;
+    }
+
+    public Button getMinimizeButton() {
+        return minimizeButton;
+    }
+
+    public Button getCloseButton() {
+        return closeButton;
+    }
+
+    public void setTitleHeight(int titleHeight) {
+        this.titleHeight = titleHeight;
+    }
+
+    public void setTitleButtonHeight(int titleButtonHeight) {
+        this.titleButtonHeight = titleButtonHeight;
     }
 }
