@@ -2,7 +2,6 @@ package gui;
 
 import java.util.Optional;
 
-import img.LoadedImages;
 import img.SafeImage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
