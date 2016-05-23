@@ -1,4 +1,4 @@
-package javafx;
+package gui;
 
 import java.util.Optional;
 

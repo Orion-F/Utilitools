@@ -1,6 +1,6 @@
 package log;
 
-import javafx.CustomStage;
+import gui.CustomStage;
 
 public class Console extends CustomStage {
     

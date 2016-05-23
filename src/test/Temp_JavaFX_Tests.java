@@ -1,6 +1,6 @@
 package test;
 
-import javafx.BackupToolGUI;
+import gui.BackupToolGUI;
 import javafx.application.Application;
 import javafx.stage.Stage;
 

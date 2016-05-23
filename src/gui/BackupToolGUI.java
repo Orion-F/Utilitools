@@ -1,4 +1,4 @@
-package javafx;
+package gui;
 
 public class BackupToolGUI extends CustomStage {
     
