@@ -58,7 +58,7 @@ public class CustomStage extends Stage {
         HBox.setHgrow(titleBuffer, Priority.ALWAYS);
         
         minimizeButton = new Button();
-        minimizeButton.setGraphic(new ImageView(new SafeImage("/img/minimizeIcon.png").getImage()));
+        minimizeButton.setGraphic(new ImageView(new SafeImage("/img/minimizeIcon.png").get()));
         minimizeButton.setPrefHeight(titleButtonHeight);
         minimizeButton.setMaxHeight(titleButtonHeight);
         minimizeButton.setMinHeight(titleButtonHeight);
@@ -69,7 +69,7 @@ public class CustomStage extends Stage {
             }
         });
         closeButton = new Button();
-        closeButton.setGraphic(new ImageView(new SafeImage("/img/closeIcon.png").getImage()));
+        closeButton.setGraphic(new ImageView(new SafeImage("/img/closeIcon.png").get()));
         closeButton.setPrefHeight(titleButtonHeight);
         closeButton.setMaxHeight(titleButtonHeight);
         closeButton.setMinHeight(titleButtonHeight);
