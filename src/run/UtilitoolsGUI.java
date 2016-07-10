@@ -18,17 +18,8 @@ public class UtilitoolsGUI extends CustomStage {
     private Label infoLabel;
     
     public UtilitoolsGUI() {
-        InputStream versionStream = UtilitoolsGUI.class.getResourceAsStream("/run/VERSION.txt");
-        String version = "???";
-        if (versionStream != null) {
-            BufferedReader versionReader = new BufferedReader(new InputStreamReader(versionStream));
-            try {
-                version = versionReader.readLine();
-            } catch (IOException e) {
-                //Do nothing
-            }
-        }
-        this.setCustomTitle("Utilitools V" + version + " - Library Information");
+        
+        this.setCustomTitle("Utilitools V" + UtilitoolsRunner.getVersion() + " - Library Information");
         this.setResizable(false);
         this.setWidth(WIDTH);
         this.setHeight(HEIGHT);
@@ -36,7 +27,7 @@ public class UtilitoolsGUI extends CustomStage {
         this.setTitleTextColor("#EEEEEE"); //Very light Grey
         
         infoLabel = new Label("Utilitools Library\n" +
-                                "Version " + version + "\n" +
+                                "Version " + UtilitoolsRunner.getVersion() + "\n" +
                                 "\n" +
                                 "Orion Forowycz");
         infoLabel.setFont(new Font("Cambria", 30));
