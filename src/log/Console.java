@@ -4,16 +4,21 @@ import gui.CustomStage;
 
 public class Console extends CustomStage {
     
-    private final int WIDTH = 300;
-    private final int HEIGHT = 400;
+    private final int WIDTH = 500;
+    private final int HEIGHT = 300;
+    
+    
     
     public Console() {
         this.setCustomTitle("Console");
         this.setResizable(false);
         this.setWidth(WIDTH);
         this.setHeight(HEIGHT);
-        this.setTitleBarColor("#363652"); //Purple-ish
+        this.setTitleBarColor("#000000"); //black
         this.setTitleTextColor("#FFFFFF"); //White
+        
+        
+        
         
         this.show();
     }
