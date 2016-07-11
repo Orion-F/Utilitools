@@ -1,10 +1,5 @@
 package run;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
 import gui.CustomStage;
 import javafx.scene.control.Label;
 import javafx.scene.text.Font;
