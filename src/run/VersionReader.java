@@ -19,7 +19,7 @@ public class VersionReader {
      * @param name - the String name of the version file, including file extension
      * @throws VersionFileNotFoundException 
      */
-    public static void use(Class<Object> anchor, String name) {
+    public static void use(Class<?> anchor, String name) {
         InputStream versionStream = anchor.getResourceAsStream("/" + anchor.getPackage().getName() + "/" + name);
         if (versionStream != null) {
             BufferedReader versionReader = new BufferedReader(new InputStreamReader(versionStream));
@@ -38,7 +38,7 @@ public class VersionReader {
      *  
      * @param anchor - any Class in the same package
      */
-    public static void useDefault(Class<Object> anchor) {
+    public static void useDefault(Class<?> anchor) {
         use(anchor, "VERSION.txt");
     }
     
