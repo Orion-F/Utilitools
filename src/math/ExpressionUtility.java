@@ -39,10 +39,15 @@ public class ExpressionUtility {
     public static double solve(String expr) {
         expr = preFormat(expr);
         
-        //Early form of checking to make sure their is the right number of parentheses
-        //Doesn't seem to be working
-        //Will integrate into the error system later
-        if (expr.length() - expr.replace("(", "").replace(")", "").length() % 2 == 1) return -1;
+        int leftParenCount = 0;
+        for (int i = 0; i < expr.length(); i++)
+            if (expr.charAt(i) == '(') leftParenCount++;
+        int rightParenCount = 0;
+        for (int i = 0; i < expr.length(); i++)
+            if (expr.charAt(i) == ')') rightParenCount++;
+        if (leftParenCount != rightParenCount) {
+            //TODO: Log parentheses error
+        }
         
         int leftParen = -1;
         int rightParen = -1;
