@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-@SuppressWarnings("rawtypes")
 public class VersionReader {
     
     private static String version = "???";
@@ -18,15 +17,17 @@ public class VersionReader {
      * 
      * @param anchor - any class in the same package
      * @param name - the String name of the version file, including file extension
+     * @throws VersionFileNotFoundException 
      */
-    public static void use(Class anchor, String name) {
+    public static void use(Class<Object> anchor, String name) {
         InputStream versionStream = anchor.getResourceAsStream("/" + anchor.getPackage().getName() + "/" + name);
         if (versionStream != null) {
             BufferedReader versionReader = new BufferedReader(new InputStreamReader(versionStream));
             try {
                 version = versionReader.readLine();
+                ProgramInfo.setVersion(version);
             } catch (IOException e) {
-                //Do nothing
+                
             }
         }
     }
@@ -37,7 +38,7 @@ public class VersionReader {
      *  
      * @param anchor - any Class in the same package
      */
-    public static void useDefault(Class anchor) {
+    public static void useDefault(Class<Object> anchor) {
         use(anchor, "VERSION.txt");
     }
     

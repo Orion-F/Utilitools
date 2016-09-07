@@ -22,7 +22,7 @@ public class UtilitoolsRunner extends Application {
     }
     
     private static void initVersion() {
-        InputStream versionStream = UtilitoolsRunner.class.getResourceAsStream("/run/VERSION.txt");
+        InputStream versionStream = UtilitoolsRunner.class.getResourceAsStream("/run/UTILITOOLS_VERSION.txt");
         if (versionStream != null) {
             BufferedReader versionReader = new BufferedReader(new InputStreamReader(versionStream));
             try {
