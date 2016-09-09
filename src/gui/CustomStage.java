@@ -57,7 +57,7 @@ public class CustomStage extends Stage {
         titleBuffer = new HBox();
         HBox.setHgrow(titleBuffer, Priority.ALWAYS);
         
-        minimizeButton = new Button();
+        minimizeButton = new UnfocusableButton();
         minimizeButton.setGraphic(new ImageView(new SafeImage("/img/minimizeIcon.png").get()));
         minimizeButton.setPrefHeight(titleButtonHeight);
         minimizeButton.setMaxHeight(titleButtonHeight);
@@ -68,7 +68,7 @@ public class CustomStage extends Stage {
                 toggleMinimized();
             }
         });
-        closeButton = new Button();
+        closeButton = new UnfocusableButton();
         closeButton.setGraphic(new ImageView(new SafeImage("/img/closeIcon.png").get()));
         closeButton.setPrefHeight(titleButtonHeight);
         closeButton.setMaxHeight(titleButtonHeight);

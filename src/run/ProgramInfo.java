@@ -15,6 +15,10 @@ public class ProgramInfo {
         ProgramInfo.version = version;
         ProgramInfo.author = author;
     }
+    
+    public static String getDefaultTitle() {
+        return name + " V" + version;
+    }
 
     public static String getName() {
         return name;
