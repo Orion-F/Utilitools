@@ -139,6 +139,46 @@
         </script>
     </div>
 
+    <!-- Date Difference Calculator -->
+    <div class="tool-section" id="date-difference-calculator">
+        <h2>Date Difference Calculator</h2>
+        <input type="date" id="date1">
+        <input type="date" id="date2">
+        <button onclick="calculateDateDifference()">Calculate Difference</button>
+        <pre id="date-diff-output"></pre>
+        <script>
+            function calculateDateDifference() {
+                let date1 = new Date(document.getElementById('date1').value);
+                let date2 = new Date(document.getElementById('date2').value);
+                let difference = Math.abs(date2 - date1);
+                let days = Math.ceil(difference / (1000 * 60 * 60 * 24));
+                document.getElementById('date-diff-output').innerText = `${days} days`;
+            }
+        </script>
+    </div>
+
+    <!-- Diff Viewer -->
+    <div class="tool-section" id="text-diff-viewer">
+        <h2>Diff Viewer</h2>
+        <textarea id="diff-text1" placeholder="Enter first text"></textarea>
+        <textarea id="diff-text2" placeholder="Enter second text"></textarea>
+        <button onclick="viewTextDiff()">View Diff</button>
+        <pre id="diff-output"></pre>
+        <script src="https://cdn.jsdelivr.net/npm/diff@5.0.0/dist/diff.min.js"></script>
+        <script>
+            function viewTextDiff() {
+                let text1 = document.getElementById('diff-text1').value;
+                let text2 = document.getElementById('diff-text2').value;
+                let diff = Diff.diffWords(text1, text2);
+                let result = diff.map(part => {
+                    let color = part.added ? 'green' : part.removed ? 'red' : 'grey';
+                    return `<span style="background-color:${color};">${part.value}</span>`;
+                }).join('');
+                document.getElementById('diff-output').innerHTML = result;
+            }
+        </script>
+    </div>
+
     <!-- Hash Generator -->
     <div class="tool-section" id="hash-generator">
         <h2>Hash Generator (SHA-256)</h2>
@@ -294,6 +334,10 @@
             }
         </script>
     </div>
+
+
+
+
 
 </body>
 </html>
