@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utilitools</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            line-height: 1.8;
+            letter-spacing: 0.5px;
+            background-color: #eef2f5;
+            padding-top: 70px; /* Add padding to prevent content from being hidden under the header */
+        }
+
+        header {
+            background-color: #0073e6;
+            color: #fff;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 0; /* Remove border-radius */
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000; /* Ensure the header stays on top of other content */
+            box-sizing: border-box; /* Include padding in the width calculation */
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: #fff;
+            margin-left: 15px;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #0073e6;
+            color: #fff;
+            text-align: center;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        footer .social-media a {
+            color: #fff;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        footer .social-media a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .tool-section {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .tool-section h2 {
+            margin-top: 0;
+            color: #0073e6;
+        }
+
+        textarea,
+        input[type="file"],
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 4px;
+            background-color: #0073e6;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #005bb5;
+            transform: scale(1.05);
+        }
+
+        #qrcode {
+            margin-top: 10px;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .diff-removed {
+            background-color: #ffdddd;
+        }
+
+        .diff-added {
+            background-color: #ddffdd;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            margin-top: 5px;
+        }
+
+        .tool-section:hover {
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .tool-section {
+                margin: 10px 0;
+                padding: 15px;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #0073e6;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: #0073e6;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .dropbtn:hover {
+            background-color: #005bb5;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 4px;
+            right: 0; /* Align the dropdown content to the right */
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+    </style>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">Utilitools</div>
+        <a href="index_bootstrap.html">Bootstrap Version</a>
+        <nav>
+            <div class="dropdown">
+                <button class="dropbtn">Tools <i class="fas fa-caret-down"></i></button>
+                <div class="dropdown-content">
+                    <a href="#css-unit-converter">CSS Unit Converter</a>
+                    <a href="#character-word-counter">Character/Word Counter</a>
+                    <a href="#clipboard-formatter">Clipboard Formatter</a>
+                    <a href="#color-converter">Color Converter</a>
+                    <a href="#date-difference-calculator">Date Difference Calculator</a>
+                    <a href="#text-diff-viewer">Diff Viewer</a>
+                    <a href="#hash-generator">Hash Generator</a>
+                    <a href="#json-validator">JSON Validator</a>
+                    <a href="#jwt-viewer">JWT Viewer</a>
+                    <a href="#qrcode-generator">QRCode Generator</a>
+                    <a href="#regex-checker">Regex Checker</a>
+                    <a href="#string-converter">String Converter</a>
+                    <a href="#uuid-generator">UUID Generator</a>
+                    <a href="#unix-time-converter">Unix Time Converter</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- CSS Unit Converter -->
+    <div class="tool-section" id="css-unit-converter">
+        <h2>CSS Unit Converter</h2>
+        <input type="number" id="css-input-value" placeholder="Enter value">
+        <select id="css-input-unit">
+            <option value="px">px</option>
+            <option value="em">em</option>
+            <option value="rem">rem</option>
+            <option value="%">%</option>
+        </select>
+        <button onclick="convertCSSUnit()"><i class="fas fa-exchange-alt"></i> Convert</button>
+        <pre id="css-output"></pre>
+        <script>
+            function convertCSSUnit() {
+                let value = parseFloat(document.getElementById('css-input-value').value); // Convert to number
+                let unit = document.getElementById('css-input-unit').value; // Get selected unit
+                let output = '';
+                switch (unit) { // Convert value to other units
+                    case 'px':
+                        output = `${value}px = ${value / 16}em = ${value / 16}rem = ${value}%`;
+                        break;
+                    case 'em':
+                        output = `${value}em = ${value * 16}px = ${value}rem = ${value * 100}%`;
+                        break;
+                    case 'rem':
+                        output = `${value}rem = ${value * 16}px = ${value}em = ${value * 100}%`;
+                        break;
+                    case '%':
+                        output = `${value}% = ${value * 16 / 100}px = ${value / 100}em = ${value / 100}rem`;
+                        break;
+                }
+                document.getElementById('css-output').innerText = output;
+            }
+        </script>
+    </div>
+
+    <!-- Character/Word Counter -->
+    <div class="tool-section" id="character-word-counter">
+        <h2>Character/Word Counter</h2>
+        <textarea id="counter-input" placeholder="Enter text"></textarea>
+        <button onclick="countCharactersWords()"><i class="fas fa-calculator"></i> Count Characters/Words</button>
+        <pre id="counter-output"></pre>
+        <script>
+            function countCharactersWords() {
+                let input = document.getElementById('counter-input').value;
+                let characters = input.length;
+                let words = input.trim().split(/\s+/).length; // Split by whitespace and count
+                document.getElementById('counter-output').innerText = `Characters: ${characters}, Words: ${words}`;
+            }
+        </script>
+    </div>
+
+    <!-- Clipboard Formatter -->
+    <div class="tool-section" id="clipboard-formatter">
+        <h2>Clipboard Formatter</h2>
+        <textarea id="clipboard-input" placeholder="Enter text"></textarea>
+        <button onclick="formatClipboard()"><i class="fas fa-paste"></i> Format Clipboard</button>
+        <pre id="clipboard-output"></pre>
+        <script>
+            function formatClipboard() {
+                let input = document.getElementById('clipboard-input').value;
+                let output = input.trim().replace(/\s+/g, ' '); // Replace multiple spaces with a single space
+                document.getElementById('clipboard-output').innerText = output;
+            }
+        </script>
+    </div>
+
+    <!-- Color Converter -->
+    <div class="tool-section" id="color-converter">
+        <h2>Color Converter</h2>
+        <input type="text" id="color-input" placeholder="Enter color (e.g., #ff0000)">
+        <button onclick="convertColor()"><i class="fas fa-palette"></i> Convert Color</button>
+        <pre id="color-output"></pre>
+        <script>
+            function convertColor() {
+                let input = document.getElementById('color-input').value;
+                let output = '';
+                if (input.startsWith('#')) {
+                    let r = parseInt(input.slice(1, 3), 16); // Convert hex to decimal
+                    let g = parseInt(input.slice(3, 5), 16); 
+                    let b = parseInt(input.slice(5, 7), 16);
+                    output = `rgb(${r}, ${g}, ${b})`;
+                } else if (input.startsWith('rgb')) {
+                    let rgb = input.match(/\d+/g); // Extract numbers
+                    output = `#${((1 << 24) + (parseInt(rgb[0]) << 16) + (parseInt(rgb[1]) << 8) + parseInt(rgb[2])).toString(16).slice(1).toUpperCase()}`; // Convert decimal to hex
+                }
+                document.getElementById('color-output').innerText = output;
+            }
+        </script>
+    </div>
+
+    <!-- Date Difference Calculator -->
+    <div class="tool-section" id="date-difference-calculator">
+        <h2>Date Difference Calculator</h2>
+        <input type="date" id="date1">
+        <input type="date" id="date2">
+        <button onclick="calculateDateDifference()"><i class="fas fa-calendar-alt"></i> Calculate Difference</button>
+        <pre id="date-diff-output"></pre>
+        <script>
+            function calculateDateDifference() {
+                let date1 = new Date(document.getElementById('date1').value);
+                let date2 = new Date(document.getElementById('date2').value);
+                let difference = Math.abs(date2 - date1);
+                let days = Math.ceil(difference / (1000 * 60 * 60 * 24)); // Convert milliseconds to days
+                document.getElementById('date-diff-output').innerText = `${days} days`;
+            }
+        </script>
+    </div>
+
+    <!-- Diff Viewer -->
+    <div class="tool-section" id="text-diff-viewer">
+        <h2>Diff Viewer</h2>
+        <textarea id="diff-text1" placeholder="Enter first text"></textarea>
+        <textarea id="diff-text2" placeholder="Enter second text"></textarea>
+        <button onclick="viewTextDiff()"><i class="fas fa-file-alt"></i> View Diff</button>
+        <pre id="diff-output"></pre>
+        <script src="https://cdn.jsdelivr.net/npm/diff@5.0.0/dist/diff.min.js"></script>
+        <script>
+            function viewTextDiff() {
+                let text1 = document.getElementById('diff-text1').value;
+                let text2 = document.getElementById('diff-text2').value;
+                let diff = Diff.diffWords(text1, text2);
+                let result = diff.map(part => {
+                    let color = part.added ? '#ddffdd' : part.removed ? '#ffdddd' : 'transparent';
+                    return `<span style="background-color:${color};">${part.value}</span>`; // Highlight added/removed parts
+                }).join('');
+                document.getElementById('diff-output').innerHTML = result;
+            }
+        </script>
+    </div>
+
+    <!-- Hash Generator -->
+    <div class="tool-section" id="hash-generator">
+        <h2>Hash Generator (SHA-256)</h2>
+        <textarea id="hash-input" placeholder="Enter text"></textarea>
+        <button onclick="generateHash()"><i class="fas fa-lock"></i> Generate Hash</button>
+        <pre id="hash-output"></pre>
+        <script>
+            async function generateHash() {
+                let input = document.getElementById('hash-input').value;
+                let encoder = new TextEncoder();
+                let data = encoder.encode(input);
+                let hashBuffer = await crypto.subtle.digest('SHA-256', data); // Generate SHA-256 hash
+                let hashArray = Array.from(new Uint8Array(hashBuffer)); // Convert buffer to byte array
+                let hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join(''); // Convert to hex
+                document.getElementById('hash-output').innerText = hashHex;
+            }
+        </script>
+    </div>
+
+    <!-- JSON Validator -->
+    <div class="tool-section" id="json-validator">
+        <h2>JSON Validator</h2>
+        <textarea id="json-input" placeholder="Enter JSON"></textarea>
+        <button onclick="validateJSON()"><i class="fas fa-check"></i> Validate JSON</button>
+        <pre id="json-output"></pre>
+        <script>
+            function validateJSON() {
+                let input = document.getElementById('json-input').value;
+                try {
+                    JSON.parse(input);
+                    document.getElementById('json-output').innerText = "Valid JSON";
+                } catch (e) {
+                    document.getElementById('json-output').innerText = "Invalid JSON: " + e.message;
+                }
+            }
+        </script>
+    </div>
+
+    <!-- JWT Viewer -->
+    <div class="tool-section" id="jwt-viewer">
+        <h2>JWT Viewer</h2>
+        <textarea id="jwt-input" placeholder="Enter JWT"></textarea>
+        <button onclick="viewJWT()"><i class="fas fa-eye"></i> View JWT</button>
+        <pre id="jwt-output"></pre>
+        <script>
+            function viewJWT() {
+                let input = document.getElementById('jwt-input').value;
+                let parts = input.split('.');
+                if (parts.length !== 3) {
+                    document.getElementById('jwt-output').innerText = "Invalid JWT";
+                    return;
+                }
+                let header = JSON.parse(atob(parts[0])); // Decode base64
+                let payload = JSON.parse(atob(parts[1]));  
+                document.getElementById('jwt-output').innerText = `Header: ${JSON.stringify(header, null, 2)}\nPayload: ${JSON.stringify(payload, null, 2)}`; // Pretty print JSON
+            }
+        </script>
+    </div>
+
+    <!-- QRCode Generator -->
+    <div class="tool-section" id="qrcode-generator">
+        <h2>QRCode Generator</h2>
+        <textarea id="qrcode-input" placeholder="Enter text"></textarea>
+        <button onclick="generateQRCode()"><i class="fas fa-qrcode"></i> Generate QRCode</button>
+        <div id="qrcode"></div>
+        <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+        <script>
+            function generateQRCode() {
+                let input = document.getElementById('qrcode-input').value;
+                document.getElementById('qrcode').innerHTML = '';
+                new QRCode(document.getElementById('qrcode'), input);
+            }
+        </script>
+    </div>
+
+    <!-- Regex Checker -->
+    <div class="tool-section" id="regex-checker">
+        <h2>Regex Checker</h2>
+        <input type="text" id="regex-pattern" placeholder="Enter regex pattern">
+        <textarea id="regex-text" placeholder="Enter text"></textarea>
+        <button onclick="checkRegex()"><i class="fas fa-search"></i> Check Regex</button>
+        <pre id="regex-output"></pre>
+        <script>
+            function checkRegex() {
+                let pattern = document.getElementById('regex-pattern').value;
+                let text = document.getElementById('regex-text').value;
+                let regex = new RegExp(pattern, 'g');
+                let matches = text.match(regex);
+                document.getElementById('regex-output').innerText = matches ? matches.join('\n') : 'No matches found';
+            }
+        </script>
+    </div>
+
+    <!-- String Converter -->
+    <div class="tool-section" id="string-converter">
+        <h2>String Converter</h2>
+        <textarea id="string-input" placeholder="Enter text"></textarea>
+        <select id="string-operation">
+            <option value="uppercase">Uppercase</option>
+            <option value="lowercase">Lowercase</option>
+            <option value="reverse">Reverse</option>
+        </select>
+        <button onclick="convertString()"><i class="fas fa-exchange-alt"></i> Convert String</button>
+        <pre id="string-output"></pre>
+        <script>
+            function convertString() {
+                let input = document.getElementById('string-input').value;
+                let operation = document.getElementById('string-operation').value;
+                let output = '';
+                switch (operation) {
+                    case 'uppercase':
+                        output = input.toUpperCase();
+                        break;
+                    case 'lowercase':
+                        output = input.toLowerCase();
+                        break;
+                    case 'reverse':
+                        output = input.split('').reverse().join('');
+                        break;
+                }
+                document.getElementById('string-output').innerText = output;
+            }
+        </script>
+    </div>
+
+    <!-- UUID Generator -->
+    <div class="tool-section" id="uuid-generator">
+        <h2>UUID Generator</h2>
+        <button onclick="generateUUID()"><i class="fas fa-random"></i> Generate UUID</button>
+        <pre id="uuid-output"></pre>
+        <script>
+            function generateUUID() {
+                let uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                    let r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8); // Generate random UUID
+                    return v.toString(16);
+                });
+                document.getElementById('uuid-output').innerText = uuid;
+            }
+        </script>
+    </div>
+
+    <!-- Unix Time Converter -->
+    <div class="tool-section" id="unix-time-converter">
+        <h2>Unix Time Converter</h2>
+        <input type="number" id="unix-input" placeholder="Enter Unix timestamp">
+        <button onclick="convertUnixTime()"><i class="fas fa-clock"></i> Convert Unix Time</button>
+        <pre id="unix-output"></pre>
+        <script>
+            function convertUnixTime() {
+                let timestamp = parseInt(document.getElementById('unix-input').value);
+                let date = new Date(timestamp * 1000);
+                document.getElementById('unix-output').innerText = date.toUTCString();
+            }
+        </script>
+    </div>
+
+    <footer>
+        <p> Utilitools by Orion Forowycz</p>
+        <div class="social-media">
+            <a href="https://github.com/Orion-F">GitHub</a>
+            <a href="https://www.linkedin.com/in/oforo/">LinkedIn</a>
+        </div>
+    </footer>
+</body>
+
+</html>
