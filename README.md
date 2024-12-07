@@ -1,6 +1,6 @@
 # Utilitools
 
-Welcome to **Utilitools**! This repository contains a collection of web-based utility tools designed to make your life easier. The tools are available and ready to use directly from the [Utilitools Webpage](https://Orion-F.github.io/Utilitools/).
+Welcome to **Utilitools**! This repository contains a collection of utility tools designed to make your life easier. Most of the tools are available and ready to use directly from the [Utilitools Webpage](https://Orion-F.github.io/Utilitools/).
 
 ## Tools Included
 
