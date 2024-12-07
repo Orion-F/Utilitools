@@ -56,6 +56,7 @@
                         <a class="dropdown-item" href="#hash-generator">Hash Generator</a>
                         <a class="dropdown-item" href="#json-validator">JSON Validator</a>
                         <a class="dropdown-item" href="#jwt-viewer">JWT Viewer</a>
+                        <a class="dropdown-item" href="#linkedin-formatter">LinkedIn Formatter</a>
                         <a class="dropdown-item" href="#qrcode-generator">QRCode Generator</a>
                         <a class="dropdown-item" href="#regex-checker">Regex Checker</a>
                         <a class="dropdown-item" href="#string-converter">String Converter</a>
@@ -278,6 +279,53 @@
                     let header = JSON.parse(atob(parts[0]));
                     let payload = JSON.parse(atob(parts[1]));
                     document.getElementById('jwt-output').innerText = `Header: ${JSON.stringify(header, null, 2)}\nPayload: ${JSON.stringify(payload, null, 2)}`;
+                }
+            </script>
+        </div>
+
+        <!-- LinkedIn Formatter -->
+        <!-- LinkedIn Formatter -->
+        <div class="tool-section" id="linkedin-formatter">
+            <h2>LinkedIn Formatter</h2>
+            <div class="form-group">
+                <textarea class="form-control" id="linkedin-input" placeholder="Enter text"></textarea>
+                <button class="btn btn-primary mt-2" onclick="formatSelectedForLinkedIn()"><i class="fas fa-bold"></i> Convert Selected to Bold</button>
+            </div>
+            <pre id="linkedin-output"></pre>
+            <script>
+                function formatSelectedForLinkedIn() {
+                    const textarea = document.getElementById('linkedin-input');
+                    const start = textarea.selectionStart;
+                    const end = textarea.selectionEnd;
+                    const selectedText = textarea.value.substring(start, end);
+
+                    const unicodeMap = {
+                        'A': '𝗔', 'B': '𝗕', 'C': '𝗖', 'D': '𝗗', 'E': '𝗘',
+                        'F': '𝗙', 'G': '𝗚', 'H': '𝗛', 'I': '𝗜', 'J': '𝗝',
+                        'K': '𝗞', 'L': '𝗟', 'M': '𝗠', 'N': '𝗡', 'O': '𝗢',
+                        'P': '𝗣', 'Q': '𝗤', 'R': '𝗥', 'S': '𝗦', 'T': '𝗧',
+                        'U': '𝗨', 'V': '𝗩', 'W': '𝗪', 'X': '𝗫', 'Y': '𝗬',
+                        'Z': '𝗭', 'a': '𝗮', 'b': '𝗯', 'c': '𝗰', 'd': '𝗱',
+                        'e': '𝗲', 'f': '𝗳', 'g': '𝗴', 'h': '𝗵', 'i': '𝗶',
+                        'j': '𝗷', 'k': '𝗸', 'l': '𝗹', 'm': '𝗺', 'n': '𝗻',
+                        'o': '𝗼', 'p': '𝗽', 'q': '𝗾', 'r': '𝗿', 's': '𝘀',
+                        't': '𝘁', 'u': '𝘂', 'v': '𝘃', 'w': '𝘄', 'x': '𝘅',
+                        'y': '𝘆', 'z': '𝘇', '0': '𝟬', '1': '𝟭', '2': '𝟮',
+                        '3': '𝟯', '4': '𝟰', '5': '𝟱', '6': '𝟲', '7': '𝟳',
+                        '8': '𝟴', '9': '𝟵', ' ': ' '
+                    };
+
+                    const formattedText = selectedText
+                        .split('')
+                        .map(char => unicodeMap[char] || char)
+                        .join('');
+
+                    const beforeText = textarea.value.substring(0, start);
+                    const afterText = textarea.value.substring(end);
+
+                    textarea.value = beforeText + formattedText + afterText;
+                    textarea.setSelectionRange(start, start + formattedText.length);
+                    document.getElementById('linkedin-output').innerText = textarea.value;
                 }
             </script>
         </div>
